@@ -1,5 +1,28 @@
 import random
-words = [
+
+
+categorias = {
+  "paises": [
+  "Argentina",
+  "Peru",
+  "Polonia",
+  "Australia",
+  "Japon",
+  "Brasil",
+  "Canada",
+  "Marruecos",
+],
+  "animales": [
+  "perro",
+  "elefante",
+  "conejo",
+  "ballena",
+  "loro",
+  "comadreja",
+  "colibri",
+  "cocodrilo",
+],
+  "tecnologia": [
 "python",
 "programa",
 "variable",
@@ -9,11 +32,29 @@ words = [
 "entero",
 "lista",
 ]
-word = random.choice(words)
+}
+
+
+claves = list(categorias.keys())
 guessed = []
 attempts = 6
 score = 0
 print("¡Bienvenido al Ahorcado!")
+
+print("Categorias")
+for i in range(1,len(claves) + 1): #Range no toma el ultimo valor, por eso len()+1
+  print(f"{i}-{claves[i-1]}")
+
+cat = int(input("Ingrese una categoria: "))
+
+while cat < 1 or cat > len(claves):
+  print(f"{cat} no corresponde a una categoria")
+  print()
+  cat = int(input("Ingrese una categoria: "))
+
+cat = claves[cat - 1] #tomo el elemento de la lista "claves"
+word = random.choice(categorias[cat]) #accedo a los elementos del diccionario bajo la clave categorias[cat]
+
 print()
 while attempts > 0:
 # Mostrar progreso: letras adivinadas y guiones para las que faltan
@@ -31,6 +72,7 @@ while attempts > 0:
    print(f"Puntaje total {score}")
    break
 
+  print(f"categoria: {cat}")
   print(f"Intentos restantes: {attempts}")
   print(f"Letras usadas: {', '.join(guessed)}")
   letter = input("Ingresá una letra: ")
