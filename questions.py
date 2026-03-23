@@ -1,6 +1,5 @@
 import random
 
-
 categorias = {
   "paises": [
   "Argentina",
@@ -71,7 +70,7 @@ while len(words) > 0 and seguir:
     if "_" not in progress:
       print("¡Ganaste!")
       score += 6
-      print(f"Puntaje total {score}")
+      print(f"Puntaje de ronda {score}")
       break
 
     print(f"categoria: {cat}")
@@ -93,8 +92,10 @@ while len(words) > 0 and seguir:
     print()
   else:
     print(f"¡Perdiste! La palabra era: {word}")
-    print(f"Puntaje total: 0")
+    print(f"Puntaje de ronda: 0")
   print("¿Seguir Jugando?")
   op = int(input("1 - SI\n2 - NO \n"))
+  while op not in [1,2]:
+   op = int(input("opcion invalida, ingrese nuevamente: "))
   seguir = op == 1
 print(f"Puntaje total: {score}")
